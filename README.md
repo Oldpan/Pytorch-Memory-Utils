@@ -1,13 +1,16 @@
 # Pytorch-Memory-Utils
 
 These codes can help you to detect your GPU memory during training with Pytorch.
+
+## The following is the print content.
+
 - Calculate the memory usage of a single model
 ```
 Model Sequential : params: 0.450304M
 Model Sequential : intermedite variables: 336.089600 M (without backward)
 Model Sequential : intermedite variables: 672.179200 M (with backward)
 ```
-- Track the amount of GPU memory
+- Track the amount of GPU memory usage
 ```
 # 08-Jun-18-17:56:51-gpu_mem_prof
 
@@ -31,3 +34,14 @@ At __main__ <module>: line 126                       Total Used Memory:1088.5 Mb
 + __main__ <module>: line 126                        (3,)                 1.14 M <class 'torch.Tensor'>
 + __main__ <module>: line 126                        (256, 128, 3, 3)     1.12 M <class 'torch.nn.parameter.Parameter'>
 ```
+
+## How to use
+
+in Progress
+
+
+# REFERENCE
+Part of the code is referenced from:
+http://jacobkimmel.github.io/pytorch_estimating_model_size/ 
+https://gist.github.com/MInner/8968b3b120c95d3f50b8a22a74bf66bc
+
