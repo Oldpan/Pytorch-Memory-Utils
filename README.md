@@ -2,6 +2,8 @@
 
 These codes can help you to detect your GPU memory during training with Pytorch.
 
+**The work will be perfected after Pytorch-1.0 comes out.** 
+
 ## The following is the print content.
 
 - Calculate the memory usage of a single model
@@ -37,7 +39,7 @@ At __main__ <module>: line 126                       Total Used Memory:1088.5 Mb
 
 ## How to use
 
-in Progress
+Maybe needs some modification because Pytorch-1.0 will release in 10.2.
 
 
 # REFERENCE
