@@ -4,6 +4,12 @@ These codes can help you to detect your GPU memory during training with Pytorch.
 
 **The work will be perfected after Pytorch-1.0 comes out.** 
 
+# Requirement:
+
+```
+pynvml(pip install nvidia-ml-py3)
+```
+
 ## The following is the print content.
 
 - Calculate the memory usage of a single model
