@@ -69,9 +69,9 @@ device = torch.device('cuda:0')
 frame = inspect.currentframe()          # define a frame to track
 gpu_tracker = MemTracker(frame)         # define a GPU tracker
 
-gpu_tracker.track()                     # run the function between lines you run use GPU
+gpu_tracker.track()                     # run function between the code line where uses GPU
 cnn = models.vgg19(pretrained=True).features.to(device).eval()
-gpu_tracker.track()                     # run the function between lines you run use GPU
+gpu_tracker.track()                     # run function between the code line where uses GPU
 
 dummy_tensor_1 = torch.randn(30, 3, 512, 512).float().to(device)  # 30*3*512*512*4/1000/1000 = 94.37M
 dummy_tensor_2 = torch.randn(40, 3, 512, 512).float().to(device)  # 40*3*512*512*4/1000/1000 = 125.82M
