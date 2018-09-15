@@ -19,7 +19,7 @@ Model Sequential : intermedite variables: 336.089600 M (without backward)
 Model Sequential : intermedite variables: 672.179200 M (with backward)
 ```
 - Track the amount of GPU memory usage
-```
+```markdown
 # 12-Sep-18-21:48:45-gpu_mem_track.txt
 
 GPU Memory Track | 12-Sep-18-21:48:45 | Total Used Memory:696.5  Mb
