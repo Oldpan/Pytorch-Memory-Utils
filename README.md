@@ -2,7 +2,7 @@
 
 These codes can help you to detect your GPU memory during training with Pytorch.
 
-**The work will be perfected after Pytorch-1.0 comes out.** 
+A blog about this tool and explain the details : https://oldpan.me/archives/pytorch-gpu-memory-usage-track
 
 # Requirement:
 
