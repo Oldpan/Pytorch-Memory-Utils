@@ -5,6 +5,24 @@ import pynvml
 import torch
 import numpy as np
 
+dtype_memory_size_dict = {
+    torch.float32: 32/8,
+    torch.float: 32/8,
+    torch.float16: 16/8,
+    torch.half: 16/8,
+    torch.int32: 32/8,
+    torch.int: 32/8,
+    torch.int64: 64/8,
+    torch.long: 64/8
+}
+
+
+def get_mem_space(x):
+    try:
+        ret = dtype_memory_size_dict[x]
+    except KeyError:
+        print("dtype {x} is not supported!")
+    return ret
 
 class MemTracker(object):
     """
@@ -64,17 +82,20 @@ class MemTracker(object):
                 self.begin = False
 
             if self.print_detail is True:
-                ts_list = [tensor.size() for tensor in self.get_tensors()]
-                new_tensor_sizes = {(type(x), tuple(x.size()), ts_list.count(x.size()), np.prod(np.array(x.size()))*4/1000**2)
-                                    for x in self.get_tensors()}
-                for t, s, n, m in new_tensor_sizes - self.last_tensor_sizes:
-                    f.write(f'+ | {str(n)} * Size:{str(s):<20} | Memory: {str(m*n)[:6]} M | {str(t):<20}\n')
-                for t, s, n, m in self.last_tensor_sizes - new_tensor_sizes:
-                    f.write(f'- | {str(n)} * Size:{str(s):<20} | Memory: {str(m*n)[:6]} M | {str(t):<20} \n')
+                ts_list = [(tensor.size(), tensor.dtype) for tensor in self.get_tensors()]
+                new_tensor_sizes = {(type(x),
+                                    tuple(x.size()),
+                                    ts_list.count((x.size(), x.dtype)),
+                                    np.prod(np.array(x.size()))*get_mem_space(x.dtype)/1000**2,
+                                    x.dtype) for x in self.get_tensors()}
+                for t, s, n, m, data_type in new_tensor_sizes - self.last_tensor_sizes:
+                    f.write(f'+ | {str(n)} * Size:{str(s):<20} | Memory: {str(m*n)[:6]} M | {str(t):<20} | {data_type}\n')
+                for t, s, n, m, data_type in self.last_tensor_sizes - new_tensor_sizes:
+                    f.write(f'- | {str(n)} * Size:{str(s):<20} | Memory: {str(m*n)[:6]} M | {str(t):<20} | {data_type}\n')
+
                 self.last_tensor_sizes = new_tensor_sizes
 
             f.write(f"\nAt {where_str:<50}"
                     f"Total Used Memory:{meminfo.used/1000**2:<7.1f}Mb\n\n")
 
         pynvml.nvmlShutdown()
-
