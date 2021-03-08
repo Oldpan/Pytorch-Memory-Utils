@@ -21,7 +21,7 @@ def get_mem_space(x):
     try:
         ret = dtype_memory_size_dict[x]
     except KeyError:
-        print("dtype {x} is not supported!")
+        print(f"dtype {x} is not supported!")
     return ret
 
 class MemTracker(object):
