@@ -99,7 +99,7 @@ This will output a ``.txt`` to current dir and the content of output is above(pr
 
 1. Why Total Tensor Used Memory is much smaller than Total Allocated Memory?
 
-* Total Allocated Memory is the peak of the memory usage. When you delete some tensors, PyTorch will not release the space to the device, until you call ``gpu_tracker.clear_cache()`` like our sciprts.
+* Total Allocated Memory is the peak of the memory usage. When you delete some tensors, PyTorch will not release the space to the device, until you call ``gpu_tracker.clear_cache()`` like the example script.
 
 * The cuda kernel will take some space. See https://github.com/pytorch/pytorch/issues/12873
 
