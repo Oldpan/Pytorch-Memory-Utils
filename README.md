@@ -4,11 +4,9 @@ These codes can help you to detect your GPU memory during training with Pytorch.
 
 A blog about this tool and explain the details : https://oldpan.me/archives/pytorch-gpu-memory-usage-track
 
-# Requirement:
+# Usage:
 
-```
-pynvml(pip install nvidia-ml-py3)
-```
+Put ``modelsize_estimate.py`` or ``gpu_mem_track.py`` under your current working directory and import them.
 
 ## The following is the print content.
 
@@ -20,42 +18,43 @@ Model Sequential : intermedite variables: 672.179200 M (with backward)
 ```
 - Track the amount of GPU memory usage
 ```markdown
-# 12-Sep-18-21:48:45-gpu_mem_track.txt
+# 30-Apr-21-20:25:29-gpu_mem_track.txt
 
-GPU Memory Track | 12-Sep-18-21:48:45 | Total Used Memory:696.5  Mb
+GPU Memory Track | 30-Apr-21-20:25:29 | Total Tensor Used Memory:0.0    Mb Total Used Memory:0.0    Mb
 
-At __main__ <module>: line 13                        Total Used Memory:696.5  Mb
 
-+ | 7 * Size:(512, 512, 3, 3)     | Memory: 66.060 M | <class 'torch.nn.parameter.Parameter'>
-+ | 1 * Size:(512, 256, 3, 3)     | Memory: 4.7185 M | <class 'torch.nn.parameter.Parameter'>
-+ | 1 * Size:(64, 64, 3, 3)       | Memory: 0.1474 M | <class 'torch.nn.parameter.Parameter'>
-+ | 1 * Size:(128, 64, 3, 3)      | Memory: 0.2949 M | <class 'torch.nn.parameter.Parameter'>
-+ | 1 * Size:(128, 128, 3, 3)     | Memory: 0.5898 M | <class 'torch.nn.parameter.Parameter'>
-+ | 8 * Size:(512,)               | Memory: 0.0163 M | <class 'torch.nn.parameter.Parameter'>
-+ | 3 * Size:(256, 256, 3, 3)     | Memory: 7.0778 M | <class 'torch.nn.parameter.Parameter'>
-+ | 1 * Size:(256, 128, 3, 3)     | Memory: 1.1796 M | <class 'torch.nn.parameter.Parameter'>
-+ | 2 * Size:(64,)                | Memory: 0.0005 M | <class 'torch.nn.parameter.Parameter'>
-+ | 4 * Size:(256,)               | Memory: 0.0040 M | <class 'torch.nn.parameter.Parameter'>
-+ | 2 * Size:(128,)               | Memory: 0.0010 M | <class 'torch.nn.parameter.Parameter'>
-+ | 1 * Size:(64, 3, 3, 3)        | Memory: 0.0069 M | <class 'torch.nn.parameter.Parameter'>
+At main.py line 10: <module>                          Total Tensor Used Memory:0.0    Mb Total Allocated Memory:0.0    Mb
 
-At __main__ <module>: line 15                        Total Used Memory:1142.0 Mb
++ | 1 * Size:(64, 64, 3, 3)       | Memory: 0.1406 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 1 * Size:(128, 128, 3, 3)     | Memory: 0.5625 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 1 * Size:(256, 128, 3, 3)     | Memory: 1.125 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 1 * Size:(512, 256, 3, 3)     | Memory: 4.5 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 3 * Size:(256, 256, 3, 3)     | Memory: 6.75 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 8 * Size:(512,)               | Memory: 0.0156 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 2 * Size:(64,)                | Memory: 0.0004 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 7 * Size:(512, 512, 3, 3)     | Memory: 63.0 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 4 * Size:(256,)               | Memory: 0.0039 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 1 * Size:(128, 64, 3, 3)      | Memory: 0.2812 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 2 * Size:(128,)               | Memory: 0.0009 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 1 * Size:(64, 3, 3, 3)        | Memory: 0.0065 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
 
-+ | 1 * Size:(60, 3, 512, 512)    | Memory: 188.74 M | <class 'torch.Tensor'>
-+ | 1 * Size:(30, 3, 512, 512)    | Memory: 94.371 M | <class 'torch.Tensor'>
-+ | 1 * Size:(40, 3, 512, 512)    | Memory: 125.82 M | <class 'torch.Tensor'>
+At main.py line 12: <module>                          Total Tensor Used Memory:76.4   Mb Total Allocated Memory:76.4   Mb
 
-At __main__ <module>: line 21                        Total Used Memory:1550.9 Mb
++ | 1 * Size:(60, 3, 512, 512)    | Memory: 180.0 M | <class 'torch.Tensor'> | torch.float32
++ | 1 * Size:(40, 3, 512, 512)    | Memory: 120.0 M | <class 'torch.Tensor'> | torch.float32
++ | 1 * Size:(30, 3, 512, 512)    | Memory: 90.0 M | <class 'torch.Tensor'> | torch.float32
 
-+ | 1 * Size:(120, 3, 512, 512)   | Memory: 377.48 M | <class 'torch.Tensor'>
-+ | 1 * Size:(80, 3, 512, 512)    | Memory: 251.65 M | <class 'torch.Tensor'>
+At main.py line 18: <module>                          Total Tensor Used Memory:466.4  Mb Total Allocated Memory:466.4  Mb
 
-At __main__ <module>: line 26                        Total Used Memory:2180.1 Mb
++ | 1 * Size:(120, 3, 512, 512)   | Memory: 360.0 M | <class 'torch.Tensor'> | torch.float32
++ | 1 * Size:(80, 3, 512, 512)    | Memory: 240.0 M | <class 'torch.Tensor'> | torch.float32
 
-- | 1 * Size:(120, 3, 512, 512)   | Memory: 377.48 M | <class 'torch.Tensor'> 
-- | 1 * Size:(40, 3, 512, 512)    | Memory: 125.82 M | <class 'torch.Tensor'> 
+At main.py line 23: <module>                          Total Tensor Used Memory:1066.4 Mb Total Allocated Memory:1066.4 Mb
 
-At __main__ <module>: line 32                        Total Used Memory:1676.8 Mb
+- | 1 * Size:(40, 3, 512, 512)    | Memory: 120.0 M | <class 'torch.Tensor'> | torch.float32
+- | 1 * Size:(120, 3, 512, 512)   | Memory: 360.0 M | <class 'torch.Tensor'> | torch.float32
+
+At main.py line 29: <module>                          Total Tensor Used Memory:586.4  Mb Total Allocated Memory:586.4  Mb
 ```
 
 ## How to use
@@ -65,38 +64,52 @@ simple example:
 
 ```python
 import torch
-import inspect
 
 from torchvision import models
-from gpu_mem_track import  MemTracker
+from fairseq.gpu_mem_track import  MemTracker
 
 device = torch.device('cuda:0')
 
-frame = inspect.currentframe()          # define a frame to track
-gpu_tracker = MemTracker(frame)         # define a GPU tracker
+gpu_tracker = MemTracker()         # define a GPU tracker
 
 gpu_tracker.track()                     # run function between the code line where uses GPU
 cnn = models.vgg19(pretrained=True).features.to(device).eval()
 gpu_tracker.track()                     # run function between the code line where uses GPU
 
-dummy_tensor_1 = torch.randn(30, 3, 512, 512).float().to(device)  # 30*3*512*512*4/1000/1000 = 94.37M
-dummy_tensor_2 = torch.randn(40, 3, 512, 512).float().to(device)  # 40*3*512*512*4/1000/1000 = 125.82M
-dummy_tensor_3 = torch.randn(60, 3, 512, 512).float().to(device)  # 60*3*512*512*4/1000/1000 = 188.74M
+dummy_tensor_1 = torch.randn(30, 3, 512, 512).float().to(device)  # 30*3*512*512*4/1024/1024 = 90.00M
+dummy_tensor_2 = torch.randn(40, 3, 512, 512).float().to(device)  # 40*3*512*512*4/1024/1024 = 120.00M
+dummy_tensor_3 = torch.randn(60, 3, 512, 512).float().to(device)  # 60*3*512*512*4/1024/1024 = 180.00M
 
 gpu_tracker.track()
 
-dummy_tensor_4 = torch.randn(120, 3, 512, 512).float().to(device)  # 120*3*512*512*4/1000/1000 = 377.48M
-dummy_tensor_5 = torch.randn(80, 3, 512, 512).float().to(device)  # 80*3*512*512*4/1000/1000 = 251.64M
+dummy_tensor_4 = torch.randn(120, 3, 512, 512).float().to(device)  # 120*3*512*512*4/1024/1024 = 360.00M
+dummy_tensor_5 = torch.randn(80, 3, 512, 512).float().to(device)  # 80*3*512*512*4/1024/1024 = 240.00M
 
 gpu_tracker.track()
 
 dummy_tensor_4 = dummy_tensor_4.cpu()
 dummy_tensor_2 = dummy_tensor_2.cpu()
-torch.cuda.empty_cache()
+gpu_tracker.clear_cache() # or torch.cuda.empty_cache()
 
 gpu_tracker.track()
 ```
-This will output a .txt to current dir and the content of output is above(print content).
+This will output a ``.txt`` to current dir and the content of output is above(print content).
+
+# FAQs
+
+1. Why Total Tensor Used Memory is much smaller than Total Allocated Memory?
+
+* Total Allocated Memory is the peak of the memory usage. When you delete some tensors, PyTorch will not release the space to the device, until you call ``gpu_tracker.clear_cache()`` like the example script.
+
+* The cuda kernel will take some space. See https://github.com/pytorch/pytorch/issues/12873
+
+2. Why does Total Allocated Memory stay unchanged?
+
+* See Q1.
+
+3. I deleted some tensors. Why are they not deleted in tracker's output?
+
+* Make sure that you have released all the references to the tensor object. Then you can call "import gc; gc.collect()" and tell python to collect the unreferenced tensor.
 
 # REFERENCE
 Part of the code is referenced from:
